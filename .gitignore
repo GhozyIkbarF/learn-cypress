@@ -1,0 +1,26 @@
+# Folder hasil test
+cypress/screenshots/
+cypress/videos/
+
+# Cache dan log
+cypress/logs/
+cypress/results/
+
+# Cypress binary
+node_modules/
+package-lock.json
+
+# File OS
+.DS_Store
+Thumbs.db
+
+# Coverage (kalau pakai code coverage)
+coverage/
+
+# Env
+.env
+.env.*
+
+# Editor/IDE
+.vscode/
+.idea/
