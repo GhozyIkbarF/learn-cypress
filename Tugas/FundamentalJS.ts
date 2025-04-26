@@ -1,64 +1,66 @@
 // Soal 1: Klasifikasi Usia
-// Buat program JavaScript yang menerima input usia beberapa orang. Program akan: 
+// Buat program JavaScript yang menerima input usia beberapa orang. Program akan:
 // ✅ Menentukan kategori usia:
 // Anak-anak: 0–12 tahun
 // Remaja: 13–17 tahun
 // Dewasa: 18–59 tahun
 // Lansia: 60+ tahun
 
-const classifyAge = (age) => {
-    if (age <= 12) return 'Anak-anak';
-    if (age <= 17) return 'Remaja';
-    if (age <= 59) return 'Dewasa';
-    return 'Lansia';
-  };
-  
-  const AgeClassification = (ageList) => {
-    const result = {};
-  
-    for (const age of ageList) {
-      const group = classifyAge(age);
-      result[group] = (result[group] || 0) + 1;
-    }
-  
-    for (const [group, count] of Object.entries(result)) {
-      console.log(`${group}: ${count}`);
-    }
+const classifyAge = (age: number) => {
+  if (age <= 12) return "Anak-anak";
+  if (age <= 17) return "Remaja";
+  if (age <= 59) return "Dewasa";
+  return "Lansia";
+};
 
-    return result;
+interface AgeClassificationResult {
+  [key: string]: number;
+}
+
+const AgeClassification = (ageList: number[]): AgeClassificationResult => {
+  const result: AgeClassificationResult = {};
+
+  for (const age of ageList) {
+    const group = classifyAge(age);
+    result[group] = (result[group] || 0) + 1;
+  }
+
+  for (const [group, count] of Object.entries(result)) {
+    console.log(`${group}: ${count}`);
+  }
+
+  return result;
 };
 
 const ageList = [5, 12, 15, 20, 25, 30, 60, 70, 80];
 AgeClassification(ageList);
 console.log("\n");
-  
-
 
 // Soal 2: Kalkulator Sederhana
 // Buat program kalkulator interaktif dengan menu:
-  
+
 // ✅ Minta pengguna memilih operasi (1–4)
 // ✅ Minta dua angka
 // ✅ Tampilkan hasil perhitungan
-  
+
 const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 // Fungsi-fungsi operasi matematika
-function tambah(a, b) {
+function tambah(a: number, b: number): number {
   return a + b;
 }
-function kurang(a, b) {
+function kurang(a: number, b: number): number {
   return a - b;
 }
-function kali(a, b) {
+function kali(a: number, b: number): number {
   return a * b;
 }
-function bagi(a, b) {
+function bagi(a: number, b: number): number | string {
   return b !== 0 ? a / b : "Tidak bisa dibagi 0";
 }
 
@@ -69,14 +71,13 @@ console.log("2. Pengurangan");
 console.log("3. Perkalian");
 console.log("4. Pembagian");
 
-// Input pilihan operasi
-rl.question("Pilih operasi (1-4): ", (pilihan) => {
-  rl.question("Masukkan angka pertama: ", (input1) => {
-    rl.question("Masukkan angka kedua: ", (input2) => {
-      const angka1 = parseFloat(input1);
-      const angka2 = parseFloat(input2);
-      let hasil;
-      let operasi;
+rl.question("Pilih operasi (1-4): ", (pilihan: string) => {
+  rl.question("Masukkan angka pertama: ", (input1: string) => {
+    rl.question("Masukkan angka kedua: ", (input2: string) => {
+      const angka1: number = parseFloat(input1);
+      const angka2: number = parseFloat(input2);
+      let hasil: number | string;
+      let operasi: string;
 
       switch (pilihan) {
         case "1":
