@@ -17,10 +17,6 @@ Thumbs.db
 # Coverage (kalau pakai code coverage)
 coverage/
 
-# Env
-.env
-.env.*
-
 # Editor/IDE
 .vscode/
 .idea/
